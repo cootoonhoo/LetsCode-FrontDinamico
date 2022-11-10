@@ -65,43 +65,35 @@ const ListAnimais =  [
 const div = document.createElement('div');
     div.setAttribute('id', 'table-div');
 
-const tabela = document.createElement('table')
+const tabela = document.createElement('table');
 
 //Criando o Header
-const thead = document.createElement('thead')
-const tr = document.createElement('tr')
+const thead = document.createElement('thead');
+const tr = document.createElement('tr');
 
 HeaderTabela.forEach(e => {
-    const th = document.createElement('th')
+    const th = document.createElement('th');
     th.innerText = e;
     thead.appendChild(th);
 });
 
-thead.appendChild(tr)
-tabela.appendChild(thead)
+thead.appendChild(tr);
+tabela.appendChild(thead);
 
 //Criando o tbody
 const tbody = document.createElement('tbody');
 ListAnimais.forEach(e =>{
-    let trAnimais = document.createElement('tr')
-    let td1 = document.createElement('td')
-    let td2 = document.createElement('td')
-    let td3 = document.createElement('td')
-    let td4 = document.createElement('td')
-    
-    td1.innerText = e.nome;
-    td2.innerText = e.especie;
-    td3.innerText = e.pais;
-    td4.innerText = e.exemplares;
+    let trAnimais = document.createElement('tr');
+    Object.keys(e).forEach(key =>{
+        let tdAtributosObj = document.createElement('td');
+        tdAtributosObj.innerText = e[key];
 
-    trAnimais.appendChild(td1)
-    trAnimais.appendChild(td2)
-    trAnimais.appendChild(td3)
-    trAnimais.appendChild(td4)
-    
+        trAnimais.appendChild(tdAtributosObj);
+    });
+
     tbody.appendChild(trAnimais)
 });
-tabela.appendChild(tbody)
+tabela.appendChild(tbody);
 
 //Criando o footer
 const tfoot = document.createElement('tfoot');
